@@ -1,7 +1,7 @@
 let largeurFenetre = document.documentElement.clientWidth;
 let hauteurFenetre = document.documentElement.clientHeight;
 let plateau: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById("plateau");
-let ctx: CanvasRenderingContext2D = plateau.getContext("2d");
+let canvas: CanvasRenderingContext2D = plateau.getContext("2d");
 let matricePion: number[][] = initialiserMatrice();
 let isAutourDuJaune = true;
 const largeurPlateau = hauteurFenetre* 0.7;
@@ -29,8 +29,8 @@ function creerPlateau(){
     plateau.width = largeurPlateau;
     plateau.height = hauteurPlateau;
 
-    ctx.fillStyle = "blue";
-    ctx.fillRect(10, 10, largeurPlateau, hauteurPlateau);
+    canvas.fillStyle = "blue";
+    canvas.fillRect(10, 10, largeurPlateau, hauteurPlateau);
 
     console.log(tailleCercle);
 
@@ -52,17 +52,17 @@ function creerPlateau(){
 function creerCercle(x: number, y: number, rayon: number, position: Array<number> = [], couleur: string | null) {
     const cercle = new Path2D();
     cercle.arc(x, y, rayon, 0, 2 * Math.PI);
-    ctx.beginPath();
-    ctx.arc(x, y, rayon, 0, 2 * Math.PI);
-    if (couleur == null) ctx.fillStyle = "white";
-    else if (couleur === "jaune") ctx.fillStyle = "yellow";
-    else ctx.fillStyle = "red";
-    ctx.strokeStyle = "black";
-    ctx.fill();
-    ctx.stroke();
+    canvas.beginPath();
+    canvas.arc(x, y, rayon, 0, 2 * Math.PI);
+    if (couleur == null) canvas.fillStyle = "white";
+    else if (couleur === "jaune") canvas.fillStyle = "yellow";
+    else canvas.fillStyle = "red";
+    canvas.strokeStyle = "black";
+    canvas.fill();
+    canvas.stroke();
 
     plateau.addEventListener("click", function (event: MouseEvent) {
-       if (ctx.isPointInPath(cercle, event.offsetX, event.offsetY)){
+       if (canvas.isPointInPath(cercle, event.offsetX, event.offsetY)){
            console.log("j'ai cliqué sur le cercle !");
            if (position.length !== 0){
                console.log("position i : " + position[0] + " position j : " + position[1]);
