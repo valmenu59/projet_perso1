@@ -37,7 +37,7 @@ function verifierEtatMenu(){
         alerteSelect2.textContent = "Vous n'avez sélectionné aucune valeur";
         toutEstOK = false;
     }
-    if (toutEstOK) document.location.href = "../vue/plateau_puissance_4.html";
+    if (toutEstOK) document.location.href = "/vue/plateau_puissance_4.html";
 }
 
 function reinitialiserAlertes(){
