@@ -1,0 +1,9 @@
+.logo_complet {
+    max-width: 34%;
+    height: auto;
+}
+
+.alerte{
+    color: red;
+    font-weight: bold;
+}

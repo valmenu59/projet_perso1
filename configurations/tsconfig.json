@@ -3,7 +3,7 @@
     "module": "commonjs",
     "target": "es5",
     "sourceMap": true,
-    "outDir": "javascript",
+    "outDir": "../controleur/javascript",
     "extends": "../tsconfig.json",
     "compilerOptions": {
       "outDir": "../out-tsc/app",
@@ -11,7 +11,7 @@
     }
   },
   "exclude": [
-    "node_modules"
+    "../node_modules"
   ],
   "include": [
     "**/*"

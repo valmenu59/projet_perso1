@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Puissance 4 : Entrez vos noms !</title>
+    <link rel="icon" href="../ressources/images/logo_puissance_4.png" id="logo">
+    <link rel="stylesheet" href="configuration_jeu.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <img src="../ressources/images/logo_puissance_4_entier.png" class="logo_complet" 
+        id="logo_complet"  alt="Logo du jeu Puissance 4">
+    </header>
+    <form>
+        <div class="formulaire" id="formulaire">
+            <label>Surnom du joueur 1 :
+                <input id="joueur1" type="text" maxlength="10">
+            </label>
+            <p class="alerte" id="alerte_texte1"></p>
+            <label for="couleur_J1">Couleur du pion du joueur 1 :
+                <select id="couleur_J1" title="Sélectionnez la couleur de votre pion : ">
+                    <option value="">Sélectionnez une couleur</option>
+                    <option value="rouge">Rouge</option>
+                    <option value="jaune">Jaune</option>
+                    <option value="random">Aléatoire</option>
+                </select>
+            </label>
+            <p class="alerte" id="alerte_select1"></p>
+            <br>
+            <br>
+            <label>Surnom du joueur 2 :
+                <input id="joueur2" type="text" maxlength="10">
+            </label>
+            <p class="alerte" id="alerte_texte2"></p>
+            <label for="couleur_J2">Couleur du pion du joueur 2 :
+                <select id="couleur_J2" title="Sélectionnez la couleur de votre pion : ">
+                    <option value="">Sélectionnez une couleur</option>
+                    <option value="rouge">Rouge</option>
+                    <option value="jaune">Jaune</option>
+                    <option value="random">Aléatoire</option>
+                </select>
+            </label>
+            <p class="alerte" id="alerte_select2"></p>
+            <br>
+            <br>
+            <button type="button" id="bouton_valider">Tout valider et jouer !</button>
+
+
+        </div>
+
+    </form>
+
+
+
+</body>
+<script src="../controleur/javascript/intro_jeu.js"></script>
+</html>
