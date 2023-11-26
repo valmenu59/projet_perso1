@@ -1,5 +1,5 @@
 
-const boutonAccepter = <HTMLButtonElement> document.getElementById("bouton_valider");
+const boutonAccepter = <HTMLButtonElement> document.getElementById("boutonValider");
 const alerteInput1 = <HTMLParagraphElement> document.getElementById("alerte_texte1");
 const alerteInput2 = <HTMLParagraphElement> document.getElementById("alerte_texte2");
 const alerteSelect1 = <HTMLParagraphElement> document.getElementById("alerte_select1");
@@ -25,20 +25,32 @@ function verifierEtatMenu(){
         alerteInput2.textContent = "Vous devez avoir au moins 3 caractères";
         toutEstOK = false;
     }
-    if (texte1 == texte2){
+    if (texte1 === texte2){
         alerteInput1.textContent += "\nLes 2 surnoms ne peuvent être identiques";
         toutEstOK = false;
     }
-    if (select1 == ""){
+    if (select1 === ""){
         alerteSelect1.textContent = "Vous n'avez sélectionné aucune valeur";
         toutEstOK = false;
     }
-    if (select2 == ""){
+    if (select2 === ""){
         alerteSelect2.textContent = "Vous n'avez sélectionné aucune valeur";
         toutEstOK = false;
     }
-    if (toutEstOK) document.location.href = "/vue/plateau_puissance_4.html";
+
+    if (toutEstOK) {
+        // @ts-ignore
+        let cookie = CookieTemporaire.getInstance();
+        cookie.creerCookie("nomJoueur1", texte1);
+        cookie.creerCookie("nomJoueur2", texte2);
+        cookie.creerCookie("couleurJoueur1", select1);
+        cookie.creerCookie("couleurJoueur2", select2);
+        // @ts-ignore
+        redirection("/vue/plateau_puissance_4.html", "plateau_puissance_4.html");
+    }
 }
+
+
 
 function reinitialiserAlertes(){
     alerteInput1.textContent = "";
@@ -49,7 +61,7 @@ function reinitialiserAlertes(){
 
 
 function changerMenuDeroulant(numeroSelect: number){
-    if (numeroSelect == 1){
+    if (numeroSelect === 1){
         if (selectionJoueur1.value == "rouge") selectionJoueur2.selectedIndex = 2;
         else if (selectionJoueur1.value == "jaune") selectionJoueur2.selectedIndex = 1;
         else selectionJoueur2.selectedIndex = 3;
