@@ -1,0 +1,2 @@
+Pour compiler :
+tsc -p configurations/tsconfig.json
