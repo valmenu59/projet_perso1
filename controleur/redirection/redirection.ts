@@ -8,4 +8,5 @@ function redirection(chemin: string, dossier: string){
             document.location.href = dossier;
         }
     });
+
 }

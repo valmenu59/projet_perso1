@@ -287,6 +287,7 @@ function verifierCookie(){
 
 // Au démarrage du document
 $(() => {
+    document.getElementById("body").style.display = "block";
     // @ts-ignore
     let cookie = CookieTemporaire.getInstance();
     let i = 0;

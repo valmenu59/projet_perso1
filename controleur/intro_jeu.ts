@@ -18,11 +18,11 @@ function verifierEtatMenu(){
     const select2: string = selectionJoueur2.value;
     let toutEstOK: boolean = true;
     if (texte1.length < 3) {
-        alerteInput1.textContent = "Vous devez avoir au moins 3 caractères";
+        alerteInput1.textContent = "Vous devez avoir au moins 100 caractères";
         toutEstOK = false;
     }
     if (texte2.length < 3){
-        alerteInput2.textContent = "Vous devez avoir au moins 3 caractères";
+        alerteInput2.textContent = "Vous devez avoir au moins 200 caractères";
         toutEstOK = false;
     }
     if (texte1 === texte2){
