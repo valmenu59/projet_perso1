@@ -1,3 +1,4 @@
+let divPlateau = document.getElementById("divPlateau");
 let plateau = document.getElementById("plateau");
 let canvas = plateau.getContext("2d");
 let texte = document.getElementById("texte");
@@ -33,7 +34,7 @@ function definirTaille() {
     }
     else if (largeurFenetre <= hauteurFenetre) {
         largeurPlateau = largeurFenetre;
-        hauteurPlateau = largeurPlateau * 0.9;
+        hauteurPlateau = largeurFenetre * 0.9;
     }
     else {
         largeurPlateau = hauteurFenetre * 0.8;
@@ -52,7 +53,6 @@ function creerPlateau(nouveau) {
     console.log(largeurFenetre + " " + hauteurFenetre);
     canvas.fillStyle = "blue";
     canvas.fillRect(0, 0, largeurPlateau, hauteurPlateau);
-    console.log(tailleCercle);
     placerCercle(nouveau);
 }
 function placerCercle(nouveau) {
@@ -60,24 +60,28 @@ function placerCercle(nouveau) {
     let y = posY;
     for (let i = 0; i < 6; i++) {
         for (let j = 0; j < 7; j++) {
-            console.log(x + "     " + y);
             let couleur = null;
             if (matricePion[i][j] === 0)
                 couleur = "rouge";
             else if (matricePion[i][j] === 1)
                 couleur = "jaune";
-            creerCercle(x, y, tailleCercle, [i, j], couleur, nouveau);
+            let cercle = creerCercle(x, y, couleur);
+            if (nouveau) {
+                plateau.addEventListener("click", function (event) {
+                    clickCercle(event, x, y, cercle, [i, j]);
+                });
+            }
             x += ecart;
         }
         y += ecart;
         x = (largeurPlateau / 19) + tailleCercle;
     }
 }
-function creerCercle(x, y, rayon, position = [], couleur, nouveau) {
+function creerCercle(x, y, couleur) {
     const cercle = new Path2D();
-    cercle.arc(x, y, rayon, 0, 2 * Math.PI);
+    cercle.arc(x, y, tailleCercle, 0, 2 * Math.PI);
     canvas.beginPath();
-    canvas.arc(x, y, rayon, 0, 2 * Math.PI);
+    canvas.arc(x, y, tailleCercle, 0, 2 * Math.PI);
     if (couleur == null)
         canvas.fillStyle = "white";
     else if (couleur === "jaune")
@@ -87,20 +91,21 @@ function creerCercle(x, y, rayon, position = [], couleur, nouveau) {
     canvas.strokeStyle = "black";
     canvas.fill();
     canvas.stroke();
-    if (nouveau) {
-        plateau.addEventListener("click", function (event) {
-            const rect = plateau.getBoundingClientRect();
-            const offsetX = event.clientX - rect.left;
-            const offsetY = event.clientY - rect.top;
-            console.log(rect);
-            if (canvas.isPointInPath(cercle, offsetX, offsetY)) {
-                console.log("j'ai cliqué sur le cercle !");
-                if (position.length !== 0) {
-                    console.log("position i : " + position[0] + " position j : " + position[1]);
-                    placerPion([x, y, rayon], position);
-                }
+    return cercle;
+}
+function clickCercle(event, x, y, cercle, position = []) {
+    const offsetX = event.offsetX;
+    const offsetY = event.offsetY;
+    try {
+        if (canvas.isPointInPath(cercle, offsetX, offsetY)) {
+            console.log("j'ai cliqué sur le cercle !");
+            if (position.length !== 0) {
+                console.log("position i : " + position[0] + " position j : " + position[1]);
+                placerPion([x, y], position);
             }
-        });
+        }
+    }
+    catch (e) {
     }
 }
 function trouverPositionDisponible(position) {
@@ -125,8 +130,8 @@ function placerPion(cercle, position) {
         let x = posX + ecart * position[1];
         let y = posY + ecart * resultat;
         isAutourDuJaune ?
-            creerCercle(x, y, cercle[2], [resultat, position[1]], "jaune", false)
-            : creerCercle(x, y, cercle[2], [resultat, position[1]], "rouge", false);
+            creerCercle(x, y, "jaune")
+            : creerCercle(x, y, "rouge");
         isAutourDuJaune = !isAutourDuJaune;
         affichageJoueurs();
         if (verifierVictoire([resultat, position[1]])) {
@@ -146,8 +151,8 @@ function affichageJoueurs() {
         : texte.textContent = "🔴 Au tour de " + listeJoueurs[1] + " 🔴";
 }
 function desactiverActionPlateau() {
-    plateau = document.createElement("canvas");
-    creerPlateau(false);
+    //permet de supprimer toutes les actions de canvas
+    canvas = null;
 }
 function verifierVictoire(position) {
     const i = position[0];
@@ -156,7 +161,7 @@ function verifierVictoire(position) {
     let posJ = j;
     compteur = 1;
     // On regarde du pion vers le côté gauche
-    while (j > 0) {
+    while (posJ > 0) {
         let res = regarderConditionVictoire(posI, posJ - 1);
         if (res === 1)
             return true;
@@ -167,7 +172,7 @@ function verifierVictoire(position) {
     }
     // On regarde du pion vers le côté droit
     posJ = j;
-    while (j < 6) {
+    while (posJ < 6) {
         let res = regarderConditionVictoire(posI, posJ + 1);
         if (res === 1)
             return true;
@@ -180,7 +185,8 @@ function verifierVictoire(position) {
     compteur = 1;
     // On regarde du pion vers le bas
     posJ = j;
-    while (i < 5) {
+    while (posI < 5) {
+        console.log("Le numéro de I : " + posI);
         let res = regarderConditionVictoire(posI + 1, posJ);
         if (res === 1)
             return true;
@@ -193,7 +199,7 @@ function verifierVictoire(position) {
     compteur = 1;
     // On regarde vers gauche haut
     posI = i;
-    while (i > 0 && j > 0) {
+    while (posI > 0 && posJ > 0) {
         let res = regarderConditionVictoire(posI - 1, posJ - 1);
         if (res === 1)
             return true;
@@ -207,7 +213,7 @@ function verifierVictoire(position) {
     // On regarde vers droite bas
     posI = i;
     posJ = j;
-    while (i < 5 && j < 6) {
+    while (posI < 5 && posJ < 6) {
         let res = regarderConditionVictoire(posI + 1, posJ + 1);
         if (res === 1)
             return true;
@@ -223,7 +229,7 @@ function verifierVictoire(position) {
     // On regarde vers gauche bas
     posI = i;
     posJ = j;
-    while (i < 5 && j > 0) {
+    while (posI < 5 && posJ > 0) {
         let res = regarderConditionVictoire(posI + 1, posJ - 1);
         if (res === 1)
             return true;
@@ -237,7 +243,7 @@ function verifierVictoire(position) {
     // On regarde vers droite haut
     posI = i;
     posJ = j;
-    while (i > 0 && j < 6) {
+    while (posI > 0 && posJ < 6) {
         let res = regarderConditionVictoire(posI - 1, posJ + 1);
         if (res === 1)
             return true;
@@ -252,8 +258,10 @@ function verifierVictoire(position) {
 }
 function regarderConditionVictoire(i, j) {
     let nombre = isAutourDuJaune ? 0 : 1;
+    console.log(nombre + " " + i + " " + j);
     if (matricePion[i][j] === nombre) {
         compteur++;
+        console.log("J'incrémente le compteur de 1 : " + compteur);
         if (compteur === 4)
             return 1;
         else
@@ -268,15 +276,6 @@ function verifExAEquo() {
             return false;
     }
     return true;
-}
-function verifierCookie() {
-    // @ts-ignore
-    let cookie = CookieTemporaire.getInstance();
-    let valeur = cookie.getCookie("nomJoueur1", false);
-    if (valeur === "" || valeur === "null") {
-        // @ts-ignore
-        redirection("/vue/configuration_jeu.html", "configuration_jeu.html");
-    }
 }
 // Au démarrage du document
 $(() => {
