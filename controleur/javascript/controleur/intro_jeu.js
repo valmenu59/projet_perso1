@@ -1,3 +1,4 @@
+const body = document.getElementById("body");
 const boutonAccepter = document.getElementById("boutonValider");
 const alerteInput1 = document.getElementById("alerte_texte1");
 const alerteInput2 = document.getElementById("alerte_texte2");
@@ -7,6 +8,8 @@ const texteJoueur1 = document.getElementById("joueur1");
 const texteJoueur2 = document.getElementById("joueur2");
 const selectionJoueur1 = document.getElementById("couleur_J1");
 const selectionJoueur2 = document.getElementById("couleur_J2");
+const theme = document.getElementById("iconeTheme");
+let classeJoueurs = document.getElementsByClassName("joueur");
 function verifierEtatMenu() {
     reinitialiserAlertes();
     const texte1 = texteJoueur1.value;
@@ -69,6 +72,34 @@ function changerMenuDeroulant(numeroSelect) {
             selectionJoueur1.selectedIndex = 3;
     }
 }
+function changerTheme() {
+    if (theme.alt === "icone lune") { //theme clair
+        theme.alt = "icone soleil";
+        body.style.backgroundColor = "#0E0E18FF";
+        body.style.color = "#ffffff";
+        theme.src = "/ressources/icones/soleil.png";
+        // @ts-ignore
+        for (let doc of classeJoueurs) {
+            doc.style.backgroundColor = "#191925FF";
+        }
+        boutonAccepter.style.backgroundColor = "#030303FF";
+        boutonAccepter.style.color = "#ffffff";
+        boutonAccepter.style.borderColor = "#ffffff";
+    }
+    else {
+        theme.alt = "icone lune";
+        body.style.backgroundColor = "#fafafa";
+        body.style.color = "#000000";
+        theme.src = "/ressources/icones/lune.png";
+        // @ts-ignore
+        for (let doc of classeJoueurs) {
+            doc.style.backgroundColor = "#F0F0F0FF";
+        }
+        boutonAccepter.style.backgroundColor = "#ffffff";
+        boutonAccepter.style.color = "#000000";
+        boutonAccepter.style.borderColor = "#000000";
+    }
+}
 $(() => {
     boutonAccepter.addEventListener("click", verifierEtatMenu);
     selectionJoueur1.addEventListener("change", function () {
@@ -76,6 +107,17 @@ $(() => {
     });
     selectionJoueur2.addEventListener("change", function () {
         changerMenuDeroulant(2);
+    });
+    theme.addEventListener("click", changerTheme);
+    boutonAccepter.addEventListener("mouseover", function () {
+        theme.alt === "icone soleil" ?
+            boutonAccepter.style.backgroundColor = "#856B35FF"
+            : boutonAccepter.style.backgroundColor = "#d3941c";
+    });
+    boutonAccepter.addEventListener("mouseout", function () {
+        theme.alt === "icone soleil" ?
+            boutonAccepter.style.backgroundColor = "#030303FF"
+            : boutonAccepter.style.backgroundColor = "#ffffff";
     });
 });
 //# sourceMappingURL=intro_jeu.js.map

@@ -2,6 +2,13 @@ body {
     text-align: center;
     margin: 0;
     font-family: "Segoe UI", "serif";
+    background-color: #fafafa;
+}
+
+#iconeTheme{
+    height: 4vh;
+    max-width: 4vh;
+    width: auto;
 }
 
 .accueil {
@@ -17,13 +24,11 @@ body {
     max-width: 80vw;
     max-height: 100vh;
     margin: auto;
-    background-color: white;
 }
 
 input{
     font-family: "Segoe UI", "serif";
     font-size: 1.15rem;
-
 }
 
 
@@ -33,13 +38,13 @@ header{
 }
 
 .formulaire {
-    background-color: white;
+
 }
 
 .joueur {
     font-size: clamp(1.4rem, 1.75vh, 100px);
     font-optical-sizing: auto;
-    background-color: rgb(240, 240, 240);
+    background-color: #F0F0F0FF;
 }
 
 .alerte{
@@ -64,6 +69,7 @@ header{
 #joueur1, #joueur2{
     height: 2vh;
     min-height: 25px;
+
 }
 
 #couleur_J1, #couleur_J2{
@@ -102,16 +108,15 @@ option:hover {
 }
 
 
-
 .boutonValider{
     margin-bottom: 1vh;
 }
 
 
-/* Ajoutez des styles pour rendre les étiquettes et les champs de formulaire plus espacés */
 label {
     display: block;
     margin-bottom: 10px;
+
 }
 
 
