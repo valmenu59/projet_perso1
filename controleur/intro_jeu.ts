@@ -10,6 +10,7 @@ const selectionJoueur1 = <HTMLSelectElement> document.getElementById("couleur_J1
 const selectionJoueur2 = <HTMLSelectElement> document.getElementById("couleur_J2");
 const theme = <HTMLImageElement> document.getElementById("iconeTheme");
 let classeJoueurs = <HTMLCollectionOf <HTMLDivElement>> document.getElementsByClassName("joueur");
+let input = <HTMLCollectionOf<HTMLInputElement>> document.getElementsByTagName("input");
 
 
 function verifierEtatMenu(){
@@ -20,11 +21,11 @@ function verifierEtatMenu(){
     const select2: string = selectionJoueur2.value;
     let toutEstOK: boolean = true;
     if (texte1.length < 3) {
-        alerteInput1.textContent = "Vous devez avoir au moins 100 caractères";
+        alerteInput1.textContent = "Vous devez avoir au moins 3 caractères";
         toutEstOK = false;
     }
     if (texte2.length < 3){
-        alerteInput2.textContent = "Vous devez avoir au moins 200 caractères";
+        alerteInput2.textContent = "Vous devez avoir au moins 3 caractères";
         toutEstOK = false;
     }
     if (texte1 === texte2){
@@ -87,6 +88,15 @@ function changerTheme(){
         boutonAccepter.style.backgroundColor = "#030303FF";
         boutonAccepter.style.color = "#ffffff";
         boutonAccepter.style.borderColor = "#ffffff";
+
+        // @ts-ignore
+        for (let elem of input){
+            elem.style.backgroundColor = "#202020";
+            elem.style.borderColor = "#000000";
+            elem.style.color = "#ffffff";
+        }
+
+
     } else {
         theme.alt = "icone lune";
         body.style.backgroundColor = "#fafafa";
@@ -122,4 +132,5 @@ $(() => {
             boutonAccepter.style.backgroundColor = "#030303FF"
             : boutonAccepter.style.backgroundColor = "#ffffff";
     });
+
 });
