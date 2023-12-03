@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Puissance 4 : Entrez vos noms !</title>
+    <link rel="icon" href="/src/ressources/images/logo_puissance_4.png" id="logo">
+    <link rel="stylesheet" href="/src/vue/configuration_jeu.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<script>
+
+</script>
+<body>
+    <div class="accueil">
+        <div class ="centre">
+            <header>
+                <img src="/src/ressources/images/logo_puissance_4_entier.png" class="logo_complet"
+                id="logo_complet"  alt="Logo du jeu Puissance 4">
+            </header>
+            <form>
+                <div class="formulaire" id="formulaire">
+                    <div class="joueur" id="divJ1">
+                        <label>Surnom du joueur 1 :
+                            <input id="joueur1" type="text" maxlength="10">
+                        </label>
+                        <p class="alerte" id="alerte_texte1"></p>
+                        <label for="couleur_J1">Couleur du pion du joueur 1 :
+                            <select class="selection" id="couleur_J1" title="Sélectionnez la couleur de votre pion : ">
+                                <option value="">Sélectionnez une couleur</option>
+                                <option value="rouge">Rouge</option>
+                                <option value="jaune">Jaune</option>
+                                <option value="random">Aléatoire</option>
+                            </select>
+                        </label>
+                        <p class="alerte" id="alerte_select1"></p>
+                    </div>
+                    <div class="joueur" id="divJ2">
+                        <label>Surnom du joueur 2 :
+                            <input id="joueur2" type="text" maxlength="10">
+                        </label>
+                        <p class="alerte" id="alerte_texte2"></p>
+                        <label for="couleur_J2">Couleur du pion du joueur 2 :
+                            <select class="selection" id="couleur_J2" title="Sélectionnez la couleur de votre pion : ">
+                                <option value="">Sélectionnez une couleur</option>
+                                <option value="rouge">Rouge</option>
+                                <option value="jaune">Jaune</option>
+                                <option value="random">Aléatoire</option>
+                            </select>
+                        </label>
+                        <p class="alerte" id="alerte_select2"></p>
+                    </div>
+
+                    <button type="button" class="boutonValider" id="boutonValider">Tout valider et jouer !</button>
+
+
+                </div>
+            </form>
+            <div id="credit">
+                <p>VERSION 0.1, PROCHAINE GROSSE FONCTIONNALITE PREVUE : POUVOIR JOUER EN LIGNE !</p>
+                <p>@valmenu59 <a href="https://github.com/valmenu59">https://github.com/valmenu59</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/build/controleur/intro_jeu.js"></script>
+<script src="/build/controleur/redirection/redirection.js"></script>
+<script src="/build/controleur/cookie/CookieTemporaire.js"></script>
+</html>

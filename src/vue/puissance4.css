@@ -1,0 +1,79 @@
+
+body {
+    text-align: center;
+    margin: 0;
+    font-family: "Segoe UI", "serif";
+}
+
+.puissance4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+
+
+.centre {
+    padding: 20px;
+    position: relative;
+    max-width: 80vw;
+    max-height: 80vh;
+    margin: auto;
+    background-color: white;
+}
+
+
+#divPlateau{
+    border: none;
+    margin: 0;
+}
+
+
+
+#texte {
+    font-size: 2rem;
+}
+
+button{
+    background-color: white;
+    font-size: 2rem;
+    padding: 25px;
+}
+
+button:hover{
+    background-color: #ffcb00;
+}
+
+#quitter{
+    color: red;
+    border-color: red;
+}
+
+
+
+
+@media screen and (max-width: 1200px) {
+    #texte{
+        font-size: 1.75rem;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .centre {
+        max-width: 100vw;
+        max-height: 100vh;
+    }
+
+    #texte{
+        font-size: 1.5rem;
+    }
+
+    button{
+        font-size: 1.5rem;
+        padding: 18px;
+    }
+
+
+}

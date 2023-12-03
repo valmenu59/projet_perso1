@@ -1,0 +1,138 @@
+body {
+    text-align: center;
+    margin: 0;
+    font-family: "Segoe UI", "serif";
+}
+
+.accueil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.centre {
+    padding: 20px;
+    position: relative;
+    max-width: 80vw;
+    max-height: 80vh;
+    margin: auto;
+    background-color: white;
+}
+
+input{
+    font-family: "Segoe UI", "serif";
+    font-size: 1.15rem;
+
+}
+
+
+
+header{
+    margin-bottom: 4vh;
+}
+
+.formulaire {
+    background-color: white;
+}
+
+.joueur {
+    font-size: clamp(1.4rem, 1.75vh, 100px);
+    font-optical-sizing: auto;
+    background-color: rgb(240, 240, 240);
+}
+
+.alerte{
+    font-size: clamp(1rem, 1.4vh, 70px);
+    color: red;
+    font-weight: bold;
+}
+
+#divJ1{
+    margin-bottom: 6vh;
+}
+
+#divJ2{
+    margin-bottom: 4vh;
+}
+
+#joueur1, #joueur2, #couleur_J1, #couleur_J2{
+    margin: 1.5vh;
+
+}
+
+#joueur1, #joueur2{
+    height: 2vh;
+    min-height: 25px;
+}
+
+#couleur_J1, #couleur_J2{
+    height: 2.5vh;
+    min-height: 30px;
+}
+
+
+.selection{
+    min-font-size: 40px;
+    font-size: 1.15rem;
+    position: relative;
+}
+
+option {
+    min-height: 2vh;
+}
+
+option:hover {
+    background-color: yellow;
+}
+
+.boutonValider{
+    background-color: white;
+    font-size: 2rem;
+    padding: 25px;
+}
+
+.boutonValider:hover{
+    background-color: #ffcb00;
+}
+
+#credit{
+    font-size: 1rem;
+}
+
+
+
+.boutonValider{
+    margin-bottom: 1vh;
+}
+
+
+/* Ajoutez des styles pour rendre les étiquettes et les champs de formulaire plus espacés */
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+
+.logo_complet {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+}
+
+
+@media screen and (max-width: 768px) {
+    input{
+        font-size: 1.25rem;
+    }
+
+    .selection{
+        font-size: 1.25rem;
+    }
+
+    .centre {
+        max-width: 100vw;
+        max-height: 100vh;
+    }
+}
+
