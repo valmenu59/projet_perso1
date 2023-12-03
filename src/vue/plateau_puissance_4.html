@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<meta charset="UTF-8">
+<base href="/projet_perso1/vue/">
+<script src="/build/controleur/redirection/redirection.js"></script>
+<script src="/build/controleur/cookie/CookieTemporaire.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    let cookie = CookieTemporaire.getInstance();
+    let valeur = cookie.getCookie("nomJoueur1", false);
+    console.log("valeur du cookie = " + valeur);
+    if (valeur === "" || valeur == null){
+        redirection("/vue/configuration_jeu.html", "configuration_jeu.html");
+    }
+</script>
+<head>
+    <meta charset="UTF-8">
+    <title>Puissance 4 : Jouez ! 🟡🔴</title>
+    <link rel="icon" href="/src/ressources/images/logo_puissance_4.png" id="logo">
+    <link href="/src/vue/puissance4.css" rel="stylesheet">
+
+</head>
+<body >
+    <div class="puissance4" id="divPrincipale">
+        <div class="centre" id="centre">
+            <header>
+                <p id="texte">Au tour de :</p>
+            </header>
+
+            <div id="divPlateau">
+                <canvas id="plateau"></canvas>
+            </div>
+
+            <br>
+            <br>
+            <button type="button" id="recommencer">Recommencer une nouvelle partie !</button>
+            <button type="button" id="quitter">Retourner au menu</button>
+        </div>
+    </div>
+
+
+</body>
+<script src="/build/controleur/puissance4.js"></script>
+</html>
