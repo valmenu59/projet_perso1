@@ -1,13 +1,12 @@
 "use strict";
-function redirection(chemin, dossier) {
+function redirection(url, chemin) {
     // @ts-ignore
     $.ajax({
         type: 'POST',
-        url: '/controleur/redirection/',
+        url: url,
         data: { source: chemin },
         success: function () {
             console.log("réussi");
-            document.location.href = dossier;
         }
     });
 }

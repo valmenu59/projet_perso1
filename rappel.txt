@@ -1,0 +1,2 @@
+Pour compiler avec TypeScript:
+npx tsc --project  tsconfig.json
