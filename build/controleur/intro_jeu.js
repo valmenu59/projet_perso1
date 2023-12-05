@@ -42,9 +42,19 @@ function verifierEtatMenu() {
         cookie.creerCookie("nomJoueur2", texte2);
         cookie.creerCookie("couleurJoueur1", select1);
         cookie.creerCookie("couleurJoueur2", select2);
-        // @ts-ignore
-        redirection("/vue/plateau_puissance_4.html", "plateau_puissance_4.html");
+        redirection2("http://localhost:3000/jeu", "/src/vue/plateau_puissance_4.html");
     }
+}
+function redirection2(url, chemin) {
+    // @ts-ignore
+    $.ajax({
+        type: 'POST',
+        url: "/jeu",
+        success: function () {
+            console.log("réussi");
+            document.location.href = "/jeu";
+        }
+    });
 }
 function reinitialiserAlertes() {
     alerteInput1.textContent = "";

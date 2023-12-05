@@ -1,2 +1,2 @@
-Pour compiler :
-tsc -p configurations/tsconfig.json
+Pour compiler avec TypeScript:
+npx tsc --project  tsconfig.json
