@@ -1,11 +1,11 @@
-function redirection(url: string, chemin: string){
-    // @ts-ignore
+export function redirection(url: string, url2: string | null = null){
     $.ajax({
         type: 'POST',
         url: url,
-        data: {source: chemin},
         success: function (){
             console.log("réussi");
+            url2 == null ?
+                document.location.href = url : document.location.href = url2;
         }
     });
 }
