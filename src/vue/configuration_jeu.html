@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Puissance 4 : Entrez vos noms !</title>
-    <link rel="icon" href="/src/ressources/images/logo_puissance_4.png" id="logo">
+    <link rel="icon" href="http://localhost:3000/src/ressources/images/logo_puissance_4.png" id="logo">
     <link rel="stylesheet" href="/src/vue/configuration_jeu.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,7 @@
     <div class="accueil">
         <div class ="centre">
             <header>
-                <img src="http://localhost:3000/src/ressources/images/logo_puissance_4.png" class="logo_complet"
+                <img src="/src/ressources/images/logo_puissance_4_entier.png" class="logo_complet"
                 id="logo_complet"  alt="Logo du jeu Puissance 4">
             </header>
             <form>
@@ -63,11 +63,5 @@
         </div>
     </div>
 </body>
-
-<script src="/build/controleur/intro_jeu.js"></script>
-<!--
-<script src="/build/controleur/redirection/redirection.js"></script>
--->
-<script src="/build/controleur/cookie/CookieTemporaire.js"></script>
-
+<script type="module" src="/build/controleur/intro_jeu.js"></script>
 </html>

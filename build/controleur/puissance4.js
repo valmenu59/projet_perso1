@@ -1,4 +1,6 @@
-"use strict";
+import { redirection } from "./redirection/redirection.js";
+import { Cookie } from "./cookie/Cookie.js";
+let divPrincipale = document.getElementById("divPrincipale");
 let plateau = document.getElementById("plateau");
 let canvas = plateau.getContext("2d");
 let texte = document.getElementById("texte");
@@ -282,19 +284,20 @@ function verifExAEquo() {
     return true;
 }
 function verifierCookie() {
-    // @ts-ignore
-    let cookie = CookieTemporaire.getInstance();
+    let cookie = Cookie.getInstance();
     let valeur = cookie.getCookie("nomJoueur1", false);
-    if (valeur === "" || valeur === "null") {
-        // @ts-ignore
-        redirection("/vue/configuration_jeu.html", "configuration_jeu.html");
+    console.log("valeur du cookie = " + valeur);
+    if (valeur === "" || valeur == null) {
+        redirection("/");
+    }
+    else {
+        divPrincipale.style.display = "block";
     }
 }
 // Au démarrage du document
-// @ts-ignore
 $(() => {
-    // @ts-ignore
-    let cookie = CookieTemporaire.getInstance();
+    verifierCookie();
+    let cookie = Cookie.getInstance();
     let i = 0;
     let matriceJoueurs = [];
     do {
@@ -319,8 +322,7 @@ $(() => {
     });
     boutonQuitter.addEventListener("click", function () {
         if (window.confirm("Voulez-vous vraiment quitter ? ")) {
-            // @ts-ignore
-            redirection("/vue/configuration_jeu.html", "configuration_jeu.html");
+            redirection("/");
         }
     });
     console.log(listeJoueurs);

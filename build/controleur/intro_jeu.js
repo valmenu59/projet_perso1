@@ -1,4 +1,5 @@
-"use strict";
+import { redirection } from "./redirection/redirection.js";
+import { Cookie } from "./cookie/Cookie.js";
 const boutonAccepter = document.getElementById("boutonValider");
 const alerteInput1 = document.getElementById("alerte_texte1");
 const alerteInput2 = document.getElementById("alerte_texte2");
@@ -36,17 +37,17 @@ function verifierEtatMenu() {
         toutEstOK = false;
     }
     if (toutEstOK) {
-        // @ts-ignore
-        let cookie = CookieTemporaire.getInstance();
+        let cookie = Cookie.getInstance();
         cookie.creerCookie("nomJoueur1", texte1);
         cookie.creerCookie("nomJoueur2", texte2);
         cookie.creerCookie("couleurJoueur1", select1);
         cookie.creerCookie("couleurJoueur2", select2);
-        redirection2("http://localhost:3000/jeu", "/src/vue/plateau_puissance_4.html");
+        //redirection2("http://localhost:3000/jeu", "/src/vue/plateau_puissance_4.html");
+        //redirection("/jeu");
+        redirection("/jeu");
     }
 }
 function redirection2(url, chemin) {
-    // @ts-ignore
     $.ajax({
         type: 'POST',
         url: "/jeu",

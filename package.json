@@ -2,6 +2,7 @@
   "name": "jeux_en_ligne",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -9,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/jquery": "^3.5.29",
     "@types/node": "^20.10.2",
     "concurrently": "^8.2.2",
     "nodemon": "^3.0.2",
@@ -44,6 +46,7 @@
     "is-fullwidth-code-point": "^3.0.0",
     "is-glob": "^4.0.3",
     "is-number": "^7.0.0",
+    "jquery": "^3.7.1",
     "lodash": "^4.17.21",
     "lru-cache": "^6.0.0",
     "minimatch": "^3.1.2",
