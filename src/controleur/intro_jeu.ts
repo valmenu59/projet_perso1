@@ -1,6 +1,7 @@
 import {redirection} from "./redirection/redirection.js";
 import {Cookie} from "./cookie/Cookie.js";
 
+const body = <HTMLDivElement> document.getElementById("body");
 const boutonAccepter = <HTMLButtonElement> document.getElementById("boutonValider");
 const alerteInput1 = <HTMLParagraphElement> document.getElementById("alerte_texte1");
 const alerteInput2 = <HTMLParagraphElement> document.getElementById("alerte_texte2");
@@ -10,6 +11,9 @@ const texteJoueur1 = <HTMLInputElement> document.getElementById("joueur1");
 const texteJoueur2 = <HTMLInputElement> document.getElementById("joueur2");
 const selectionJoueur1 = <HTMLSelectElement> document.getElementById("couleur_J1");
 const selectionJoueur2 = <HTMLSelectElement> document.getElementById("couleur_J2");
+const theme = <HTMLImageElement> document.getElementById("iconeTheme");
+let classeJoueurs = <HTMLCollectionOf <HTMLDivElement>> document.getElementsByClassName("joueur");
+let input = <HTMLCollectionOf<HTMLInputElement>> document.getElementsByTagName("input");
 
 
 function verifierEtatMenu(){
@@ -84,6 +88,43 @@ function changerMenuDeroulant(numeroSelect: number){
     }
 }
 
+function changerTheme(){
+    if (theme.alt === "icone lune"){ //theme clair
+        theme.alt = "icone soleil";
+        body.style.backgroundColor = "#0E0E18FF";
+        body.style.color = "#ffffff";
+        theme.src = "/src/ressources/icones/soleil.png";
+        // @ts-ignore
+        for (let doc of classeJoueurs){
+            doc.style.backgroundColor = "#191925FF";
+        }
+        boutonAccepter.style.backgroundColor = "#030303FF";
+        boutonAccepter.style.color = "#ffffff";
+        boutonAccepter.style.borderColor = "#ffffff";
+
+        // @ts-ignore
+        for (let elem of input){
+            elem.style.backgroundColor = "#202020";
+            elem.style.borderColor = "#000000";
+            elem.style.color = "#ffffff";
+        }
+
+
+    } else {
+        theme.alt = "icone lune";
+        body.style.backgroundColor = "#fafafa";
+        body.style.color = "#000000";
+        theme.src = "/src/ressources/icones/lune.png";
+        // @ts-ignore
+        for (let doc of classeJoueurs){
+            doc.style.backgroundColor = "#F0F0F0FF";
+        }
+        boutonAccepter.style.backgroundColor = "#ffffff";
+        boutonAccepter.style.color = "#000000";
+        boutonAccepter.style.borderColor = "#000000";
+    }
+}
+
 
 // @ts-ignore
 $(() => {
@@ -94,4 +135,16 @@ $(() => {
     selectionJoueur2.addEventListener("change", function () {
         changerMenuDeroulant(2);
     });
+    theme.addEventListener("click", changerTheme);
+    boutonAccepter.addEventListener("mouseover", function () {
+        theme.alt === "icone soleil" ?
+            boutonAccepter.style.backgroundColor = "#856B35FF"
+            : boutonAccepter.style.backgroundColor = "#d3941c";
+    });
+    boutonAccepter.addEventListener("mouseout", function () {
+        theme.alt === "icone soleil" ?
+            boutonAccepter.style.backgroundColor = "#030303FF"
+            : boutonAccepter.style.backgroundColor = "#ffffff";
+    });
+
 });
