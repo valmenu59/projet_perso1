@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Accueil : Connectez-vous!</title>
-    <link rel="icon" href="http://localhost:3000/src/ressources/images/logo_puissance_4.png" id="logo">
-    <link rel="stylesheet" href="/src/vue/configuration_jeu.css">
+    <link rel="icon" href="http://localhost:3000/src/ressources/logos/jouez.fun_logo_minimal.png" id="logo">
+    <link rel="stylesheet" href="/src/vue/accueil.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -14,9 +14,19 @@
 <body>
 <div class="accueil">
     <div class ="centre">
+        <header>
+            <img src="/src/ressources/logos/jouez.fun_logo.png" class="logo"
+                 id="logo_jouez.fun"  alt="Logo du jeu Puissance 4">
+        </header>
         <div class="panneau">
-            <button>Se connecter sur le site</button>
-            <button>Première connexion ?</button>
+            <div class="panneau_centre">
+                <div id="bouton_se_connecter">
+                    <button>Se connecter sur le site</button>
+                </div>
+                <div id="bouton_premiere_connexion">
+                    <button>Première connexion ?</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

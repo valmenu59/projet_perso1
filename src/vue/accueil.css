@@ -26,7 +26,27 @@ input{
 
 }
 
+.logo{
+    width: 40vw;
+    height: auto;
+}
 
+.panneau{
+    display: flex;
+    background-color: #ffcb00;
+    height: 60vh;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    border: 5px solid blue;
+}
+
+.panneau_centre{
+    background-color: red;
+    position: relative;
+    max-width: 80vw;
+    max-height: 80vh;
+}
 
 header{
     margin-bottom: 4vh;
@@ -36,41 +56,15 @@ header{
     background-color: white;
 }
 
-.joueur {
-    font-size: clamp(1.4rem, 1.75vh, 100px);
-    font-optical-sizing: auto;
-    background-color: rgb(240, 240, 240);
+button{
+    width: 20vw;
+    height: 5vh;
+    border-radius: 15px;
 }
 
-.alerte{
-    font-size: clamp(1rem, 1.4vh, 70px);
-    color: red;
-    font-weight: bold;
+#bouton_se_connecter, #bouton_premiere_connexion{
+    padding: 2vh;
 }
-
-#divJ1{
-    margin-bottom: 6vh;
-}
-
-#divJ2{
-    margin-bottom: 4vh;
-}
-
-#joueur1, #joueur2, #couleur_J1, #couleur_J2{
-    margin: 1.5vh;
-
-}
-
-#joueur1, #joueur2{
-    height: 2vh;
-    min-height: 25px;
-}
-
-#couleur_J1, #couleur_J2{
-    height: 2.5vh;
-    min-height: 30px;
-}
-
 
 .selection{
     min-font-size: 40px;
@@ -78,28 +72,9 @@ header{
     position: relative;
 }
 
-option {
-    min-height: 2vh;
-}
-
-option:hover {
-    background-color: yellow;
-}
-
-.boutonValider{
-    background-color: white;
-    font-size: 2rem;
-    padding: 25px;
-}
-
-.boutonValider:hover{
-    background-color: #ffcb00;
-}
-
 #credit{
     font-size: 1rem;
 }
-
 
 
 .boutonValider{
@@ -107,20 +82,16 @@ option:hover {
 }
 
 
-label {
-    display: block;
-    margin-bottom: 10px;
-}
 
-
-.logo_complet {
-    width: 100%;
-    max-width: 800px;
-    height: auto;
-}
 
 
 @media screen and (max-width: 768px) {
+
+    .logo {
+        width: 100%;
+        max-width: 800px;
+        height: auto;
+    }
     input{
         font-size: 1.25rem;
     }

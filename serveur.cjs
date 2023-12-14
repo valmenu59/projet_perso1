@@ -8,19 +8,27 @@ const port = 3000;
 // Permet de donner un chemin statique (qui est ici la racine)
 app.use(express.static(path.join(__dirname)));
 
-app.get('/', (req, res) => {
+app.get('/', (req, res ) => {
+    res.sendFile(path.join(__dirname, 'src', 'vue', 'accueil.html'));
+});
+
+app.post('/', (req, res ) => {
+    res.sendFile(path.join(__dirname, 'src', 'vue', 'accueil.html'));
+});
+
+app.get('/puissance4/menu_solo', (req, res) => {
     res.sendFile(path.join(__dirname, 'src', 'vue', 'configuration_jeu.html'));
 });
 
-app.post('/', (req, res) => {
+app.post('/puissance4/menu_solo', (req, res) => {
     res.sendFile(path.join(__dirname, 'src', 'vue', 'configuration_jeu.html'));
 });
 
-app.get('/jeu', (req, res) => {
+app.get('/puissance4/jeu_solo', (req, res) => {
     res.sendFile(path.join(__dirname, 'src', 'vue', 'plateau_puissance_4.html'));
 });
 
-app.post('/jeu', (req, res) => {
+app.post('/puissance4/jeu_solo', (req, res) => {
     res.sendFile(path.join(__dirname, 'src', 'vue', 'plateau_puissance_4.html'));
 });
 
